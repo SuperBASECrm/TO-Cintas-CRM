@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperBase Mini CRM</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>SuperBase CRM</h1>
+    <p>Manage companies, contacts, and tasks with Supabase.</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-button active" data-section="companies">Companies</button>
+    <button class="tab-button" data-section="contacts">Contacts</button>
+    <button class="tab-button" data-section="tasks">Tasks</button>
+  </nav>
+
+  <main>
+    <section id="companiesSection" class="panel active" data-section="companies">
+      <h2>Companies</h2>
+      <form id="companyForm">
+        <label>
+          Company Name *
+          <input type="text" id="companyName" required>
+        </label>
+        <label>
+          Phone
+          <input type="text" id="companyPhone">
+        </label>
+        <label>
+          Address
+          <textarea id="companyAddress"></textarea>
+        </label>
+        <button type="submit">Add Company</button>
+      </form>
+      <div id="companyStatus" class="status" role="status"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="companyList"></tbody>
+      </table>
+    </section>
+
+    <section id="contactsSection" class="panel" data-section="contacts">
+      <h2>Contacts</h2>
+      <label for="contactCompanySelect">Choose Company</label>
+      <select id="contactCompanySelect">
+        <option value="">Select a company</option>
+      </select>
+      <form id="contactForm">
+        <label>
+          First Name *
+          <input type="text" id="contactFirstName" required>
+        </label>
+        <label>
+  Last Name
+  <input type="text" id="contactLastName">
+</label>
+
+        <label>
+          Email
+          <input type="email" id="contactEmail">
+        </label>
+        <label>
+          Phone
+          <input type="text" id="contactPhone">
+        </label>
+        <button type="submit">Add Contact</button>
+      </form>
+      <div id="contactStatus" class="status" role="status"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="contactList"></tbody>
+      </table>
+    </section>
+
+    <section id="tasksSection" class="panel" data-section="tasks">
+      <h2>Tasks</h2>
+      <label for="taskContactSelect">Choose Contact</label>
+      <select id="taskContactSelect">
+        <option value="">Select a contact</option>
+      </select>
+      <form id="taskForm">
+        <label>
+          Title *
+          <input type="text" id="taskTitle" required>
+        </label>
+        <label>
+          Due Date
+          <input type="date" id="taskDueDate">
+        </label>
+        <button type="submit">Add Task</button>
+      </form>
+      <div id="taskStatus" class="status" role="status"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Due</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="taskList"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Paste your Supabase URL and anon key in <code>app.js</code> to connect.</p>
+  </footer>
+</body>
+</html>
